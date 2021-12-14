@@ -1,37 +1,18 @@
-## Welcome to GitHub Pages
+## Welcome to my page.
+I I am currently a second-year graduate student from School of Cyber Science and Engineering, Shanghai Jiao Tong University(SJTU).
 
-You can use the [editor on GitHub](https://github.com/Venclexta/venclexta.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
+### Education
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+M.S., Electrical Information(Cyber Science and Engineering), Shanghai Jiao Tong University. 2020-2023(expected)
+B.E., Information Security, Harbin Institute of Technology at Weihai. 2016-2020
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Research Interests
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Venclexta/venclexta.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Symmetric Cryptography
+Symmetric Cryptanalysis
+Authenticated Encryption
 
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Email: zhangjn@sjtu.edu.cn  zhangjn99@foxmail.com
