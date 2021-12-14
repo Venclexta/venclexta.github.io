@@ -11,5 +11,5 @@ I am currently a second-year graduate student from School of Cyber Science and E
 - Authenticated Encryption
 
 ## Contact
-Personal Website: <jnzhang.com>
-Email: <zhangjn@sjtu.edu.cn> or <zhangjn99@foxmail.com>
+- Personal Website: <https://www.jnzhang.com>
+- Email: <zhangjn@sjtu.edu.cn> or <zhangjn99@foxmail.com>
