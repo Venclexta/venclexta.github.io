@@ -1,4 +1,4 @@
-# Welcome to my page.&#x1F430;
+# Welcome to my page.[EN](index.md) [CN](index_cn.md)
 I am currently a second-year graduate student from School of Cyber Science and Engineering, Shanghai Jiao Tong University (SJTU). 
 
 ## Education &#x1F393;
