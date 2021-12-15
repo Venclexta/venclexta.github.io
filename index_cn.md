@@ -1,11 +1,11 @@
-# 中文版
+# 中文版 [EN](index.md)
 I am currently a second-year graduate student from School of Cyber Science and Engineering, Shanghai Jiao Tong University (SJTU). 
 
-## Education &#x1F393;
+## 教育经历 &#x1F393;
 - M.Eng., Electronic Information, Shanghai Jiao Tong University. 2020-2023 (expected) 
 - B.Eng., Information Security, Harbin Institute of Technology at Weihai. 2016-2020
 
-## Research Interests &#x1F50D;
+## 研究兴趣 &#x1F50D;
 - Symmetric Cryptography
 - Symmetric Cryptanalysis
 - Authenticated Encryption
