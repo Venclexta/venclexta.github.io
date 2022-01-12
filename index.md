@@ -1,5 +1,5 @@
 # Welcome to my page. [中文版](index_cn.md)
-I am currently  currently pursuing the Ph.D. degree with the School of Cyber Science and Engineering, Shanghai Jiao Tong University (SJTU). 
+I am currently pursuing the Ph.D. degree with the School of Cyber Science and Engineering, Shanghai Jiao Tong University (SJTU). 
 
 ## Education &#x1F393;
 - Ph.D. Student (Master-Doctor combind program), Electronic Information, Shanghai Jiao Tong University.
