@@ -1,8 +1,10 @@
 # Welcome to my page. [中文版](index_cn.md)
-I am currently a second-year graduate student from School of Cyber Science and Engineering, Shanghai Jiao Tong University (SJTU). 
+I am currently  currently pursuing the Ph.D. degree with the School of Cyber Science and Engineering, Shanghai Jiao Tong University (SJTU). 
 
 ## Education &#x1F393;
-- M.Eng., Electronic Information, Shanghai Jiao Tong University. 2020-2023 (expected) 
+- Ph.D. Student (Master-Doctor combind program), Electronic Information, Shanghai Jiao Tong University.
+    - Doctor Phase: 2022-2026 (expected)
+    - Master Phase: 2020-2022
 - B.Eng., Information Security, Harbin Institute of Technology at Weihai. 2016-2020
 
 ## Research Interests &#x1F50D;
