@@ -5,7 +5,7 @@ I am currently pursuing the Ph.D. degree with the School of Cyber Science and En
 - Ph.D. Student (Master-Doctor combind program), Electronic Information, Shanghai Jiao Tong University.
     - Doctor Phase: 2022-2026 (expected)
     - Master Phase: 2020-2022
-- B.Eng., Information Security, Harbin Institute of Technology at Weihai. 2016-2020
+- B.Eng., Information Security, Harbin Institute of Technology, Weihai. 2016-2020
 
 ## Research Interests &#x1F50D;
 - Symmetric Cryptography
