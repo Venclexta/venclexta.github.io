@@ -5,7 +5,7 @@ I am currently a PhD student from School of Cyber Science and Engineering, Shang
 - 博士在读（硕博连读），电子信息，上海交通大学
     - 博士阶段，2022-至今
     - 硕士阶段，2020-2022
-- 本科，信息安全，哈尔滨工业大学威海校区，2016-2020
+- 本科，信息安全，哈尔滨工业大学（威海），2016-2020
 
 ## 研究兴趣 &#x1F50D;
 - 对称密码算法设计
