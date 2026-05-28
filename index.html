@@ -3,8 +3,22 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Personal homepage of Jianing Zhang.">
-    <title>Jianing Zhang</title>
+    <meta name="description" content="Personal homepage of Jianing Zhang, including education, publications, academic service, and teaching.">
+    <meta property="og:site_name" content="Jianing Zhang's Page">
+    <meta property="og:title" content="Jianing Zhang's Page">
+    <meta property="og:description" content="Personal homepage of Jianing Zhang, including education, publications, academic service, and teaching.">
+    <meta property="og:url" content="https://zhangjn.com/">
+    <link rel="canonical" href="https://zhangjn.com/">
+    <title>Jianing Zhang's Page</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Jianing Zhang's Page",
+        "alternateName": ["Jianing Zhang", "zhangjn.com"],
+        "url": "https://zhangjn.com/"
+      }
+    </script>
     <script>
       (() => {
         const storedTheme = localStorage.getItem("theme");
@@ -33,7 +47,10 @@
 
       <header class="hero" id="top" aria-labelledby="page-title">
         <div class="identity">
-          <h1 id="page-title">JIANING ZHANG</h1>
+          <h1 id="page-title" aria-label="Jianing Zhang">
+            <span class="title-word" aria-hidden="true"><span class="title-initial">J</span><span class="title-small">ianing</span></span>
+            <span class="title-word" aria-hidden="true"><span class="title-initial">Z</span><span class="title-small">hang</span></span>
+          </h1>
           <ul class="contact-list" aria-label="Personal information">
             <li>
               <span><i class="fas fa-fw fa-location-dot icon-pad-right" aria-hidden="true"></i>Shanghai, China</span>
@@ -92,7 +109,6 @@
             <div>
               <div class="paper-title-row">
                 <h3><a href="https://doi.org/10.1007/s10623-025-01791-w">Optimizing Key Recovery in Impossible Cryptanalysis and Its Automated Tool</a></h3>
-                <a class="github-link" href="https://github.com/ImpossibleCryptanalysis-2024/Tool" aria-label="Code on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
               </div>
               <p class="venue"><em>Designs, Codes and Cryptography</em>.</p>
               <p class="authors">Haoyang Wang and Jianing Zhang.</p>
@@ -103,7 +119,6 @@
             <div>
               <div class="paper-title-row">
                 <h3>Towards Faster Boomerangs in Feistel Ciphers</h3>
-                <a class="github-link" href="https://github.com/FeistelBoomerang2025/boomerang" aria-label="Code on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
               </div>
               <p class="venue"><em>Under Review</em>.</p>
               <p class="authors">Jianing Zhang and Haoyang Wang.</p>
@@ -114,7 +129,6 @@
             <div>
               <div class="paper-title-row">
                 <h3><a href="https://link.springer.com/chapter/10.1007/978-981-96-9095-4_5">Improved Differential Meet-in-the-Middle Cryptanalysis on SIMON and Piccolo</a></h3>
-                <a class="github-link" href="https://github.com/d-mitm/Piccolo" aria-label="Code on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
               </div>
               <p class="venue"><em>Australasian Conference on Information Security and Privacy (ACISP)</em>.</p>
               <p class="authors">Weiqing Deng, Jianing Zhang, and Haoyang Wang.</p>
@@ -125,7 +139,6 @@
             <div>
               <div class="paper-title-row">
                 <h3><a href="https://doi.org/10.46586/tosc.v2024.i2.254-295">Impossible Boomerang Attacks Revisited</a></h3>
-                <a class="github-link" href="https://github.com/IBRevisited/IB2024" aria-label="Code on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
               </div>
               <p class="venue"><em>IACR Transactions on Symmetric Cryptology</em>.</p>
               <p class="authors">Jianing Zhang, Haoyang Wang, and Deng Tang.</p>

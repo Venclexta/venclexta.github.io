@@ -142,13 +142,37 @@ a:hover {
 }
 
 h1 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.18em;
+  row-gap: 0.08em;
   margin: 0;
   color: var(--black);
-  font-family: inherit;
-  font-size: clamp(30px, 3.4vw, 38px);
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 38px;
   font-weight: 600;
   letter-spacing: 0.02em;
   line-height: 1.08;
+}
+
+.title-word {
+  display: inline-flex;
+  align-items: baseline;
+  transform: scaleX(0.92);
+  transform-origin: left center;
+}
+
+.title-initial {
+  font-size: 1em;
+  line-height: 1;
+}
+
+.title-small {
+  font-size: 0.74em;
+  letter-spacing: 0.07em;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .contact-list {
@@ -287,18 +311,32 @@ p {
   border-top: 1px solid #e5e5e7;
 }
 
-.github-link {
+.github-link,
+.eprint-link {
   display: inline-flex;
   align-items: center;
   color: var(--gray-700);
   flex: 0 0 auto;
-  font-size: 15px;
   line-height: 1;
+}
+
+.github-link {
+  font-size: 15px;
+}
+
+.eprint-link {
+  font-size: 13px;
 }
 
 .github-link:hover {
   color: var(--black);
   text-decoration: none;
+}
+
+.eprint-link:hover {
+  color: var(--black);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
 .section-button {
