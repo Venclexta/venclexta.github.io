@@ -382,7 +382,26 @@ p {
 @media (max-width: 860px) {
   .page {
     width: min(calc(100% - 28px), var(--measure));
-    padding: 52px 0 102px;
+    padding: 44px 0 102px;
+  }
+
+  .theme-toggle {
+    top: 10px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+
+  .section-nav {
+    gap: 5px;
+    margin: -36px 0 18px;
+    padding: 8px 44px 9px 0;
+  }
+
+  .section-nav a {
+    padding: 4px 7px;
+    font-size: 11.5px;
   }
 
   .hero,
@@ -429,6 +448,10 @@ p {
     font-size: 14px;
   }
 
+  .page {
+    width: min(calc(100% - 20px), var(--measure));
+  }
+
   h1 {
     font-size: 32px;
   }
@@ -439,7 +462,22 @@ p {
   }
 
   .section-nav {
-    margin-bottom: 16px;
+    gap: 2px;
+    margin: -36px -2px 16px;
+    padding-right: 36px;
+  }
+
+  .section-nav a {
+    padding: 4px 4px;
+    font-size: 10.5px;
+    letter-spacing: 0;
+  }
+
+  .theme-toggle {
+    right: 8px;
+    width: 26px;
+    height: 26px;
+    font-size: 10.5px;
   }
 
   .paper-title-row {
