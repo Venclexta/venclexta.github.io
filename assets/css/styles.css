@@ -283,8 +283,7 @@ p {
 }
 
 .timeline-item time,
-.publication-list time,
-.muted {
+.publication-list time {
   color: var(--gray-500);
 }
 
@@ -317,7 +316,7 @@ p {
   align-items: center;
   color: var(--gray-700);
   flex: 0 0 auto;
-  line-height: 1;
+  line-height: 1.35;
 }
 
 .github-link {
@@ -325,7 +324,7 @@ p {
 }
 
 .eprint-link {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .github-link:hover {
@@ -337,24 +336,6 @@ p {
   color: var(--black);
   text-decoration: underline;
   text-underline-offset: 0.2em;
-}
-
-.section-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  width: fit-content;
-  padding: 6px 10px;
-  border: 1px solid var(--gray-300);
-  border-radius: 999px;
-  color: var(--black);
-  font-size: 13.5px;
-  line-height: 1.2;
-}
-
-.section-button:hover {
-  border-color: var(--gray-500);
-  text-decoration: none;
 }
 
 .plain-list {
@@ -447,16 +428,10 @@ p {
     font-size: 11.5px;
   }
 
-  .hero,
   .section,
   .timeline-item,
   .publication-list li {
     grid-template-columns: 1fr;
-  }
-
-  .hero {
-    min-height: auto;
-    align-items: start;
   }
 
   .section {
@@ -521,9 +496,5 @@ p {
     width: 26px;
     height: 26px;
     font-size: 10.5px;
-  }
-
-  .paper-title-row {
-    align-items: flex-start;
   }
 }
