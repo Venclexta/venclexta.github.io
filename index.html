@@ -5,11 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Personal homepage of Jianing Zhang.">
     <title>Jianing Zhang</title>
+    <script>
+      (() => {
+        const storedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = storedTheme || (prefersDark ? "dark" : "light");
+      })();
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
   </head>
   <body>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+      <i class="fas fa-moon theme-icon theme-icon-moon" aria-hidden="true"></i>
+      <i class="fas fa-sun theme-icon theme-icon-sun" aria-hidden="true"></i>
+    </button>
+
     <main class="page">
       <nav class="section-nav" aria-label="Page sections">
         <a href="#top">Info</a>
@@ -21,7 +33,7 @@
 
       <header class="hero" id="top" aria-labelledby="page-title">
         <div class="identity">
-          <h1 id="page-title">Jianing Zhang</h1>
+          <h1 id="page-title">JIANING ZHANG</h1>
           <ul class="contact-list" aria-label="Personal information">
             <li>
               <a href="mailto:zhangjn@sjtu.edu.cn"><i class="fas fa-fw fa-envelope icon-pad-right" aria-hidden="true"></i>zhangjn@sjtu.edu.cn</a>
@@ -31,6 +43,9 @@
             </li>
             <li>
               <a href="https://scholar.google.com/citations?user=Uujss4YAAAAJ"><i class="ai ai-google-scholar ai-fw icon-pad-right" aria-hidden="true"></i>Google Scholar</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/jianing-zhang-b3183740a/"><i class="fab fa-fw fa-linkedin icon-pad-right" aria-hidden="true"></i>LinkedIn</a>
             </li>
             <li>
               <span><i class="fas fa-fw fa-file-lines icon-pad-right" aria-hidden="true"></i>CV</span>
@@ -66,7 +81,7 @@
       <section class="section publications" id="publications" aria-labelledby="publications-title">
         <div class="section-label">
           <span>02</span>
-          <h2 id="publications-title">Publications</h2>
+          <h2 id="publications-title"><a href="publications.html">Publications</a></h2>
         </div>
         <ol class="publication-list">
           <li>
@@ -109,7 +124,7 @@
                 <h3><a href="https://doi.org/10.46586/tosc.v2024.i2.254-295">Impossible Boomerang Attacks Revisited</a></h3>
                 <a class="github-link" href="https://github.com/IBRevisited/IB2024" aria-label="Code on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
               </div>
-              <p class="venue"><em>IACR Transactions on Symmetric Cryptology</em>, 2024(2).</p>
+              <p class="venue"><em>IACR Transactions on Symmetric Cryptology</em>.</p>
               <p class="authors">Jianing Zhang, Haoyang Wang, and Deng Tang.</p>
             </div>
           </li>
@@ -132,7 +147,7 @@
       <section class="section teaching" id="teaching" aria-labelledby="teaching-title">
         <div class="section-label">
           <span>04</span>
-          <h2 id="teaching-title">Teaching</h2>
+          <h2 id="teaching-title">Teaching Experience</h2>
         </div>
         <div class="section-content">
           <article class="timeline-item">
@@ -140,10 +155,32 @@
               <h3>C++ Programming (CS1501)</h3>
               <p>Teaching Assistant, Shanghai Jiao Tong University</p>
             </div>
-            <time>Fall 2021<br>Fall 2022<br>Fall 2024</time>
+            <time class="term-list">
+              <span>Fall 2021</span>
+              <span>Fall 2022</span>
+              <span>Fall 2024</span>
+            </time>
           </article>
         </div>
       </section>
     </main>
+    <footer class="site-footer">Last updated: May 2026</footer>
+    <script>
+      const root = document.documentElement;
+      const toggle = document.querySelector(".theme-toggle");
+      const initialTheme = root.dataset.theme || "light";
+
+      function setTheme(theme) {
+        root.dataset.theme = theme;
+        toggle.setAttribute("aria-pressed", theme === "dark");
+        toggle.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+        localStorage.setItem("theme", theme);
+      }
+
+      setTheme(initialTheme);
+      toggle.addEventListener("click", () => {
+        setTheme(root.dataset.theme === "dark" ? "light" : "dark");
+      });
+    </script>
   </body>
 </html>

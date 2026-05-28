@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Publications of Jianing Zhang.">
+    <title>Publications | Jianing Zhang</title>
+    <script>
+      (() => {
+        const storedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = storedTheme || (prefersDark ? "dark" : "light");
+      })();
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+      <i class="fas fa-moon theme-icon theme-icon-moon" aria-hidden="true"></i>
+      <i class="fas fa-sun theme-icon theme-icon-sun" aria-hidden="true"></i>
+    </button>
+
+    <main class="page">
+      <nav class="section-nav" aria-label="Publication sections">
+        <a href="index.html">Home</a>
+        <a href="#conference">Conference</a>
+        <a href="#journal">Journal</a>
+        <a href="#manuscript">Manuscript</a>
+      </nav>
+
+      <header class="hero" id="top" aria-labelledby="page-title">
+        <div class="identity">
+          <h1 id="page-title">PUBLICATIONS</h1>
+          <ul class="contact-list" aria-label="Page links">
+            <li>
+              <a href="index.html"><i class="fas fa-fw fa-arrow-left icon-pad-right" aria-hidden="true"></i>Back to home</a>
+            </li>
+          </ul>
+        </div>
+      </header>
+
+      <section class="section publications" id="conference" aria-labelledby="conference-title">
+        <div class="section-label">
+          <span>01</span>
+          <h2 id="conference-title">Conference Papers</h2>
+        </div>
+        <ol class="publication-list">
+          <li>
+            <time>2025</time>
+            <div>
+              <div class="paper-title-row">
+                <h3><a href="https://link.springer.com/chapter/10.1007/978-981-96-9095-4_5">Improved Differential Meet-in-the-Middle Cryptanalysis on SIMON and Piccolo</a></h3>
+                <a class="github-link" href="https://github.com/d-mitm/Piccolo" aria-label="Code on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+              </div>
+              <p class="venue"><em>Australasian Conference on Information Security and Privacy (ACISP)</em>.</p>
+              <p class="authors">Weiqing Deng, Jianing Zhang, and Haoyang Wang.</p>
+            </div>
+          </li>
+          <li>
+            <time>2024</time>
+            <div>
+              <div class="paper-title-row">
+                <h3><a href="https://doi.org/10.46586/tosc.v2024.i2.254-295">Impossible Boomerang Attacks Revisited</a></h3>
+                <a class="github-link" href="https://github.com/IBRevisited/IB2024" aria-label="Code on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+              </div>
+              <p class="venue"><em>IACR Transactions on Symmetric Cryptology</em>.</p>
+              <p class="authors">Jianing Zhang, Haoyang Wang, and Deng Tang.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section publications" id="journal" aria-labelledby="journal-title">
+        <div class="section-label">
+          <span>02</span>
+          <h2 id="journal-title">Journal Articles</h2>
+        </div>
+        <ol class="publication-list">
+          <li>
+            <time>2026</time>
+            <div>
+              <div class="paper-title-row">
+                <h3><a href="https://doi.org/10.1007/s10623-025-01791-w">Optimizing Key Recovery in Impossible Cryptanalysis and Its Automated Tool</a></h3>
+                <a class="github-link" href="https://github.com/ImpossibleCryptanalysis-2024/Tool" aria-label="Code on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+              </div>
+              <p class="venue"><em>Designs, Codes and Cryptography</em>.</p>
+              <p class="authors">Haoyang Wang and Jianing Zhang.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section publications" id="manuscript" aria-labelledby="manuscript-title">
+        <div class="section-label">
+          <span>03</span>
+          <h2 id="manuscript-title">Manuscripts</h2>
+        </div>
+        <ol class="publication-list">
+          <li>
+            <time>2025</time>
+            <div>
+              <div class="paper-title-row">
+                <h3>Towards Faster Boomerangs in Feistel Ciphers</h3>
+                <a class="github-link" href="https://github.com/FeistelBoomerang2025/boomerang" aria-label="Code on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+              </div>
+              <p class="venue"><em>Under Review</em>.</p>
+              <p class="authors">Jianing Zhang and Haoyang Wang.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+    </main>
+    <footer class="site-footer">Last updated: May 2026</footer>
+    <script>
+      const root = document.documentElement;
+      const toggle = document.querySelector(".theme-toggle");
+      const initialTheme = root.dataset.theme || "light";
+
+      function setTheme(theme) {
+        root.dataset.theme = theme;
+        toggle.setAttribute("aria-pressed", theme === "dark");
+        toggle.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+        localStorage.setItem("theme", theme);
+      }
+
+      setTheme(initialTheme);
+      toggle.addEventListener("click", () => {
+        setTheme(root.dataset.theme === "dark" ? "light" : "dark");
+      });
+    </script>
+  </body>
+</html>
