@@ -167,6 +167,11 @@ h1 {
   line-height: 1.25;
 }
 
+.contact-list a,
+.contact-list span {
+  color: var(--black);
+}
+
 .icon-pad-right {
   margin-right: 5px;
   color: var(--gray-800);
