@@ -8,6 +8,8 @@
   --gray-500: #86868b;
   --gray-300: #d2d2d7;
   --gray-100: #f5f5f7;
+  --section-rule: #d2d2d7;
+  --item-rule: #e5e5e7;
   --nav-bg: rgba(255, 255, 255, 0.82);
   --toggle-bg: #f5f5f7;
   --toggle-border: #d2d2d7;
@@ -23,6 +25,8 @@
   --gray-500: #8e8e93;
   --gray-300: #2c2c2e;
   --gray-100: #151517;
+  --section-rule: #3a3a3c;
+  --item-rule: #2c2c2e;
   --nav-bg: rgba(11, 11, 13, 0.82);
   --toggle-bg: #151517;
   --toggle-border: #3a3a3c;
@@ -138,7 +142,7 @@ a:hover {
 
 .hero {
   padding: 0 0 22px;
-  border-bottom: 1px solid var(--gray-300);
+  border-bottom: 1px solid var(--section-rule);
 }
 
 h1 {
@@ -208,7 +212,7 @@ h1 {
   grid-template-columns: 180px minmax(0, 1fr);
   gap: 42px;
   padding: 28px 0;
-  border-bottom: 1px solid var(--gray-300);
+  border-bottom: 1px solid var(--section-rule);
 }
 
 .section-label {
@@ -279,7 +283,7 @@ p {
 
 .timeline-item + .timeline-item {
   padding-top: 16px;
-  border-top: 1px solid var(--gray-300);
+  border-top: 1px solid var(--item-rule);
 }
 
 .timeline-item time,
@@ -307,7 +311,7 @@ p {
 
 .publication-list li + li {
   padding-top: 14px;
-  border-top: 1px solid #e5e5e7;
+  border-top: 1px solid var(--item-rule);
 }
 
 .github-link,
@@ -393,7 +397,7 @@ p {
     overflow-x: auto;
     transform: none;
     background: var(--nav-bg);
-    border-bottom: 1px solid var(--gray-300);
+    border-bottom: 1px solid var(--section-rule);
     backdrop-filter: blur(12px);
   }
 
