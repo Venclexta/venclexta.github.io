@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Links from Jianing Zhang's personal homepage.">
+    <title>Links | Jianing Zhang</title>
+    <script>
+      (() => {
+        let storedTheme = null;
+        try {
+          storedTheme = localStorage.getItem("theme");
+        } catch {
+          storedTheme = null;
+        }
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = storedTheme || (prefersDark ? "dark" : "light");
+      })();
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260529-7">
+    <script src="assets/js/site.js?v=20260529-1" defer></script>
+  </head>
+  <body>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+      <i class="fas fa-moon theme-icon theme-icon-moon" aria-hidden="true"></i>
+      <i class="fas fa-sun theme-icon theme-icon-sun" aria-hidden="true"></i>
+    </button>
+
+    <main class="page">
+      <nav class="section-nav" aria-label="Page links">
+        <a href="index.html">Home</a>
+        <a href="publications.html">Publications</a>
+      </nav>
+
+      <header class="hero" id="top" aria-labelledby="page-title">
+        <h1 id="page-title" aria-label="Links">
+          <span class="title-word" aria-hidden="true"><span class="title-initial">L</span><span class="title-small">inks</span></span>
+        </h1>
+        <ul class="contact-list" aria-label="Page links">
+          <li>
+            <a href="index.html"><i class="fas fa-fw fa-arrow-left icon-pad-right" aria-hidden="true"></i>Back to home</a>
+          </li>
+        </ul>
+      </header>
+
+      <section class="section" id="links" aria-labelledby="links-title">
+        <div class="section-label">
+          <span>01</span>
+          <h2 id="links-title">Links</h2>
+        </div>
+        <div class="section-content">
+          <ul class="plain-list">
+            <li><a href="https://attack-sota.pages.dev/">Attack SOTA</a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <span>Last updated: May 2026</span>
+      <a href="links.html" aria-current="page">Links</a>
+    </footer>
+  </body>
+</html>

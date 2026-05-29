@@ -382,14 +382,24 @@ p {
   right: 0;
   bottom: 0;
   z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
   padding: 9px max(20px, calc((100vw - var(--measure)) / 2)) 10px;
   border-top: 1px solid var(--gray-300);
   background: var(--nav-bg);
   color: var(--gray-500);
   font-size: 12px;
   line-height: 1.2;
-  pointer-events: none;
   backdrop-filter: blur(12px);
+}
+
+.site-footer a {
+  color: var(--gray-700);
+}
+
+.site-footer a:hover {
+  color: var(--black);
 }
 
 @media (max-width: 1260px) {
