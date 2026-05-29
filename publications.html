@@ -14,7 +14,7 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css?v=20260529-2">
+    <link rel="stylesheet" href="assets/css/styles.css?v=20260529-3">
   </head>
   <body>
     <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
@@ -132,6 +132,51 @@
       toggle.addEventListener("click", () => {
         setTheme(root.dataset.theme === "dark" ? "light" : "dark");
       });
+
+      const sectionNav = document.querySelector(".section-nav");
+      const sectionLinks = [...sectionNav.querySelectorAll('a[href^="#"]')];
+      const trackedSections = sectionLinks
+        .map((link) => document.querySelector(link.getAttribute("href")))
+        .filter(Boolean);
+
+      function keepActiveLinkVisible(link) {
+        const navRect = sectionNav.getBoundingClientRect();
+        const linkRect = link.getBoundingClientRect();
+
+        if (linkRect.left < navRect.left) {
+          sectionNav.scrollBy({ left: linkRect.left - navRect.left - 8, behavior: "smooth" });
+        } else if (linkRect.right > navRect.right) {
+          sectionNav.scrollBy({ left: linkRect.right - navRect.right + 8, behavior: "smooth" });
+        }
+      }
+
+      function updateActiveSection() {
+        const marker = window.innerHeight * 0.35;
+        let activeSection = trackedSections[0];
+
+        for (const section of trackedSections) {
+          if (section.getBoundingClientRect().top <= marker) {
+            activeSection = section;
+          }
+        }
+
+        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+          activeSection = trackedSections[trackedSections.length - 1];
+        }
+
+        for (const link of sectionLinks) {
+          const isActive = link.getAttribute("href") === `#${activeSection.id}`;
+          link.toggleAttribute("aria-current", isActive);
+          if (isActive) {
+            link.setAttribute("aria-current", "location");
+            keepActiveLinkVisible(link);
+          }
+        }
+      }
+
+      updateActiveSection();
+      window.addEventListener("scroll", updateActiveSection, { passive: true });
+      window.addEventListener("resize", updateActiveSection);
     </script>
   </body>
 </html>

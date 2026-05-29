@@ -140,6 +140,13 @@ a:hover {
   text-decoration: none;
 }
 
+.section-nav a[aria-current="location"] {
+  border-color: var(--gray-500);
+  background: var(--toggle-bg);
+  color: var(--black);
+  text-decoration: none;
+}
+
 .hero {
   padding: 0 0 22px;
   border-bottom: 1px solid var(--section-rule);
