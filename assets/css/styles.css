@@ -13,6 +13,13 @@
   --nav-bg: rgba(255, 255, 255, 0.82);
   --toggle-bg: #f5f5f7;
   --toggle-border: #d2d2d7;
+  --map-water: #eef2f3;
+  --map-region: #dedee3;
+  --map-region-soft: #e8e8ed;
+  --map-line: #ffffff;
+  --map-visited: #2f7d6d;
+  --map-visited-line: #1f5d52;
+  --map-graticule: rgba(134, 134, 139, 0.13);
   --measure: 1120px;
 }
 
@@ -30,6 +37,13 @@
   --nav-bg: rgba(11, 11, 13, 0.82);
   --toggle-bg: #151517;
   --toggle-border: #3a3a3c;
+  --map-water: #111113;
+  --map-region: #2c2c2e;
+  --map-region-soft: #242426;
+  --map-line: #151517;
+  --map-visited: #63b69f;
+  --map-visited-line: #83d0bd;
+  --map-graticule: rgba(142, 142, 147, 0.14);
 }
 
 * {
@@ -376,6 +390,151 @@ p {
   white-space: nowrap;
 }
 
+.footprint-page {
+  width: min(calc(100% - 32px), 1440px);
+  min-height: calc(100svh - 33px);
+  padding: 26px 0 48px;
+}
+
+.footprint-hero {
+  padding-bottom: 18px;
+  border-bottom: 0;
+}
+
+.footprint-map-shell {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--section-rule);
+  border-radius: 8px;
+  background: var(--map-water);
+}
+
+.footprint-map {
+  display: block;
+  width: 100%;
+  height: min(calc(100svh - 156px), 720px);
+  min-height: 460px;
+  background: var(--map-water);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.footprint-map.is-dragging {
+  cursor: grabbing;
+}
+
+.footprint-graticule {
+  fill: none;
+  stroke: var(--map-graticule);
+  stroke-width: 0.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.footprint-region {
+  fill: var(--map-region);
+  stroke: var(--map-line);
+  stroke-width: 0.65;
+  vector-effect: non-scaling-stroke;
+  transition: fill 160ms ease, opacity 160ms ease;
+}
+
+.footprint-region:hover,
+.footprint-region:focus {
+  fill: var(--map-region-soft);
+  outline: none;
+}
+
+.footprint-region.is-visited {
+  fill: var(--map-visited);
+  stroke: var(--map-visited-line);
+}
+
+.footprint-region.is-visited:hover,
+.footprint-region.is-visited:focus {
+  fill: var(--map-visited);
+}
+
+.footprint-map.is-detail-zoom .footprint-region {
+  fill-opacity: 0.62;
+}
+
+.footprint-map.is-detail-zoom .footprint-region.is-visited {
+  fill-opacity: 0.34;
+}
+
+.footprint-map.is-detail-zoom .footprint-region:hover,
+.footprint-map.is-detail-zoom .footprint-region:focus {
+  fill-opacity: 0.68;
+}
+
+.footprint-region.is-microstate {
+  stroke-width: 1.15;
+}
+
+.footprint-province {
+  stroke-width: 0.45;
+}
+
+.footprint-china-layer {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.footprint-map.is-china-detail .footprint-china-layer {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.footprint-map.is-china-detail .footprint-country.is-china-country {
+  fill: var(--map-region-soft);
+}
+
+.map-tooltip {
+  position: absolute;
+  z-index: 3;
+  max-width: min(220px, calc(100% - 24px));
+  padding: 5px 7px;
+  border: 1px solid var(--gray-300);
+  border-radius: 6px;
+  background: var(--nav-bg);
+  color: var(--black);
+  font-size: 12px;
+  line-height: 1.25;
+  pointer-events: none;
+  backdrop-filter: blur(12px);
+}
+
+.map-controls {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+  display: grid;
+  gap: 6px;
+}
+
+.map-controls button {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid var(--gray-300);
+  border-radius: 999px;
+  background: var(--nav-bg);
+  color: var(--gray-700);
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+}
+
+.map-controls button:hover {
+  border-color: var(--gray-500);
+  color: var(--black);
+}
+
 .site-footer {
   position: fixed;
   left: 0;
@@ -428,6 +587,11 @@ p {
   .page {
     width: min(calc(100% - 28px), var(--measure));
     padding: 44px 0 102px;
+  }
+
+  .footprint-page {
+    width: min(calc(100% - 22px), 1440px);
+    padding: 54px 0 48px;
   }
 
   .theme-toggle {
@@ -517,5 +681,21 @@ p {
     width: 26px;
     height: 26px;
     font-size: 10.5px;
+  }
+
+  .footprint-map {
+    height: calc(100svh - 190px);
+    min-height: 420px;
+  }
+
+  .map-controls {
+    right: 9px;
+    bottom: 9px;
+  }
+
+  .map-controls button {
+    width: 28px;
+    height: 28px;
+    font-size: 10px;
   }
 }

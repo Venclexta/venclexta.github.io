@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Links from Jianing Zhang's personal homepage.">
-    <title>Links | Jianing Zhang</title>
+    <meta name="description" content="Travel footprint map of Jianing Zhang.">
+    <title>Footprints | Jianing Zhang</title>
     <script>
       (() => {
         let storedTheme = null;
@@ -20,7 +20,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <link rel="stylesheet" href="assets/css/styles.css?v=20260530-10">
+    <script src="https://cdn.jsdelivr.net/npm/d3@7" defer></script>
     <script src="assets/js/site.js?v=20260529-1" defer></script>
+    <script src="assets/js/footprints.js?v=20260530-15" defer></script>
   </head>
   <body>
     <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
@@ -28,15 +30,10 @@
       <i class="fas fa-sun theme-icon theme-icon-sun" aria-hidden="true"></i>
     </button>
 
-    <main class="page">
-      <nav class="section-nav" aria-label="Page links">
-        <a href="index.html">Home</a>
-        <a href="publications.html">Publications</a>
-      </nav>
-
-      <header class="hero" id="top" aria-labelledby="page-title">
-        <h1 id="page-title" aria-label="Links">
-          <span class="title-word" aria-hidden="true"><span class="title-initial">L</span><span class="title-small">inks</span></span>
+    <main class="page footprint-page">
+      <header class="hero footprint-hero" id="top" aria-labelledby="page-title">
+        <h1 id="page-title" aria-label="Footprints">
+          <span class="title-word" aria-hidden="true"><span class="title-initial">F</span><span class="title-small">ootprints</span></span>
         </h1>
         <ul class="contact-list" aria-label="Page links">
           <li>
@@ -44,23 +41,22 @@
           </li>
         </ul>
       </header>
-
-      <section class="section" id="links" aria-labelledby="links-title">
-        <div class="section-label">
-          <span>01</span>
-          <h2 id="links-title">Links</h2>
+      <div class="footprint-map-shell">
+        <svg class="footprint-map" data-footprint-map viewBox="0 0 1000 520" role="img" aria-label="Travel footprint map">
+          <g class="footprint-graticule-layer"></g>
+          <g class="footprint-world-layer"></g>
+          <g class="footprint-china-layer"></g>
+        </svg>
+        <div class="map-controls" aria-label="Map controls">
+          <button type="button" data-map-control="zoom-in" aria-label="Zoom in"><i class="fas fa-plus" aria-hidden="true"></i></button>
+          <button type="button" data-map-control="zoom-out" aria-label="Zoom out"><i class="fas fa-minus" aria-hidden="true"></i></button>
+          <button type="button" data-map-control="reset" aria-label="Reset map"><i class="fas fa-rotate-left" aria-hidden="true"></i></button>
         </div>
-        <div class="section-content">
-          <ul class="plain-list">
-            <li><a href="https://attack-sota.pages.dev/">Attack SOTA</a></li>
-            <li><a href="footprints.html">Footprint Map</a></li>
-          </ul>
-        </div>
-      </section>
+        <div class="map-tooltip" data-map-tooltip hidden></div>
+      </div>
     </main>
     <footer class="site-footer">
       <span>Last updated: May 2026</span>
-      <a href="links.html" aria-current="page">Links</a>
     </footer>
   </body>
 </html>
