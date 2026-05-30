@@ -1,7 +1,4 @@
 (() => {
-  const WORLD_DATA_URL = "https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@master/geojson/ne_50m_admin_0_countries.geojson";
-  const CHINA_DATA_URL = "https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json";
-
   const visitedCountries = [
     "BE",
     "BT",
@@ -532,28 +529,24 @@
     pathGenerator = d3.geoPath(projection);
   }
 
-  async function fetchJson(url) {
-    const response = await fetch(url);
+  function getMapData(globalName) {
+    const data = window[globalName];
 
-    if (!response.ok) {
-      throw new Error(`Failed to load ${url}`);
+    if (!data || data.type !== "FeatureCollection" || !Array.isArray(data.features)) {
+      throw new Error(`Missing map data: ${globalName}`);
     }
 
-    return response.json();
+    return data;
   }
 
-  async function loadMap() {
+  function loadMap() {
     try {
       if (!window.d3) {
         throw new Error("D3 is unavailable");
       }
 
       initializeProjection();
-      const [worldData, chinaData] = await Promise.all([
-        fetchJson(WORLD_DATA_URL),
-        fetchJson(CHINA_DATA_URL)
-      ]);
-
+      const worldData = getMapData("FOOTPRINT_WORLD_DATA");
       renderGraticule();
       renderFeatures(worldData, worldLayer, "footprint-country", {
         getLabel: getCountryLabel,
@@ -562,13 +555,20 @@
         sortFeatures: (a, b) => getWorldLayerRank(a) - getWorldLayerRank(b),
         shouldSkip: isAntarctica
       });
-      renderFeatures(chinaData, chinaLayer, "footprint-province", {
-        getLabel: (_, name) => name,
-        isVisited: (_, name) => visitedProvinceSet.has(normalizeRegionName(name)),
-        prepareFeature: prepareChinaFeature,
-        sortFeatures: (a, b) => getChinaLayerRank(a) - getChinaLayerRank(b),
-        shouldSkip: (_, name) => normalizeRegionName(name) === "unknown"
-      });
+
+      try {
+        const chinaData = getMapData("FOOTPRINT_CHINA_DATA");
+        renderFeatures(chinaData, chinaLayer, "footprint-province", {
+          getLabel: (_, name) => name,
+          isVisited: (_, name) => visitedProvinceSet.has(normalizeRegionName(name)),
+          prepareFeature: prepareChinaFeature,
+          sortFeatures: (a, b) => getChinaLayerRank(a) - getChinaLayerRank(b),
+          shouldSkip: (_, name) => normalizeRegionName(name) === "unknown"
+        });
+      } catch {
+        svg.setAttribute("aria-label", "Travel footprint map; China province data unavailable");
+      }
+
       applyTransform();
     } catch {
       svg.setAttribute("aria-label", "Map data unavailable");
