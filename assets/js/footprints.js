@@ -53,6 +53,43 @@
     VA: "Vatican City"
   };
 
+  const chinaProvinceEnglishNames = {
+    "北京市": "Beijing",
+    "天津市": "Tianjin",
+    "河北省": "Hebei",
+    "山西省": "Shanxi",
+    "内蒙古自治区": "Inner Mongolia",
+    "辽宁省": "Liaoning",
+    "吉林省": "Jilin",
+    "黑龙江省": "Heilongjiang",
+    "上海市": "Shanghai",
+    "江苏省": "Jiangsu",
+    "浙江省": "Zhejiang",
+    "安徽省": "Anhui",
+    "福建省": "Fujian",
+    "江西省": "Jiangxi",
+    "山东省": "Shandong",
+    "河南省": "Henan",
+    "湖北省": "Hubei",
+    "湖南省": "Hunan",
+    "广东省": "Guangdong",
+    "广西壮族自治区": "Guangxi Zhuang Autonomous Region",
+    "海南省": "Hainan",
+    "重庆市": "Chongqing",
+    "四川省": "Sichuan",
+    "贵州省": "Guizhou",
+    "云南省": "Yunnan",
+    "西藏自治区": "Tibet Autonomous Region",
+    "陕西省": "Shaanxi",
+    "甘肃省": "Gansu",
+    "青海省": "Qinghai",
+    "宁夏回族自治区": "Ningxia Hui Autonomous Region",
+    "新疆维吾尔自治区": "Xinjiang Uyghur Autonomous Region",
+    "台湾省": "Taiwan",
+    "香港特别行政区": "Hong Kong SAR",
+    "澳门特别行政区": "Macao SAR"
+  };
+
   const franceMainlandBounds = {
     minLon: -6.5,
     maxLon: 10.5,
@@ -183,6 +220,16 @@
     }
 
     return englishName;
+  }
+
+  function getChinaProvinceLabel(name) {
+    const englishName = chinaProvinceEnglishNames[name];
+
+    if (englishName) {
+      return `${name} ${englishName}`;
+    }
+
+    return name;
   }
 
   function isCountryVisited(feature) {
@@ -559,7 +606,7 @@
       try {
         const chinaData = getMapData("FOOTPRINT_CHINA_DATA");
         renderFeatures(chinaData, chinaLayer, "footprint-province", {
-          getLabel: (_, name) => name,
+          getLabel: (_, name) => getChinaProvinceLabel(name),
           isVisited: (_, name) => visitedProvinceSet.has(normalizeRegionName(name)),
           prepareFeature: prepareChinaFeature,
           sortFeatures: (a, b) => getChinaLayerRank(a) - getChinaLayerRank(b),
