@@ -124,7 +124,9 @@
 
   let projection = null;
   let pathGenerator = null;
-  let dragStart = null;
+  let dragGesture = null;
+  let pinchGesture = null;
+  const activePointers = new Map();
 
   function createChineseRegionNames() {
     try {
@@ -535,10 +537,14 @@
   }
 
   function getSvgPoint(event) {
+    return getSvgPointFromClient(event.clientX, event.clientY);
+  }
+
+  function getSvgPointFromClient(clientX, clientY) {
     const rect = svg.getBoundingClientRect();
     return {
-      x: ((event.clientX - rect.left) / rect.width) * view.width,
-      y: ((event.clientY - rect.top) / rect.height) * view.height
+      x: ((clientX - rect.left) / rect.width) * view.width,
+      y: ((clientY - rect.top) / rect.height) * view.height
     };
   }
 
@@ -559,6 +565,94 @@
   function panByWheel(event) {
     const rect = svg.getBoundingClientRect();
     state.x -= (event.deltaX / rect.width) * view.width;
+    applyTransform();
+  }
+
+  function getPointerList() {
+    return Array.from(activePointers.values());
+  }
+
+  function getPointerDistance(first, second) {
+    return Math.hypot(second.clientX - first.clientX, second.clientY - first.clientY);
+  }
+
+  function getPointerMidpoint(first, second) {
+    return {
+      clientX: (first.clientX + second.clientX) / 2,
+      clientY: (first.clientY + second.clientY) / 2
+    };
+  }
+
+  function startDragGesture(pointer) {
+    dragGesture = {
+      pointerId: pointer.pointerId,
+      clientX: pointer.clientX,
+      clientY: pointer.clientY,
+      x: state.x,
+      y: state.y
+    };
+    pinchGesture = null;
+  }
+
+  function startPinchGesture(first, second) {
+    const distance = getPointerDistance(first, second);
+
+    if (!distance) {
+      return;
+    }
+
+    const midpoint = getPointerMidpoint(first, second);
+    const svgPoint = getSvgPointFromClient(midpoint.clientX, midpoint.clientY);
+    pinchGesture = {
+      distance,
+      scale: state.scale,
+      worldX: (svgPoint.x - state.x) / state.scale,
+      worldY: (svgPoint.y - state.y) / state.scale
+    };
+    dragGesture = null;
+  }
+
+  function refreshPointerGesture() {
+    const pointers = getPointerList();
+
+    if (pointers.length >= 2) {
+      startPinchGesture(pointers[0], pointers[1]);
+    } else if (pointers.length === 1) {
+      startDragGesture(pointers[0]);
+    } else {
+      dragGesture = null;
+      pinchGesture = null;
+      svg.classList.remove("is-dragging");
+    }
+  }
+
+  function updateDragGesture(pointer) {
+    if (!dragGesture || dragGesture.pointerId !== pointer.pointerId) {
+      return;
+    }
+
+    const rect = svg.getBoundingClientRect();
+    state.x = dragGesture.x + ((pointer.clientX - dragGesture.clientX) / rect.width) * view.width;
+    state.y = dragGesture.y + ((pointer.clientY - dragGesture.clientY) / rect.height) * view.height;
+    applyTransform();
+  }
+
+  function updatePinchGesture(first, second) {
+    if (!pinchGesture) {
+      return;
+    }
+
+    const distance = getPointerDistance(first, second);
+
+    if (!distance) {
+      return;
+    }
+
+    const midpoint = getPointerMidpoint(first, second);
+    const svgPoint = getSvgPointFromClient(midpoint.clientX, midpoint.clientY);
+    state.scale = clamp(pinchGesture.scale * (distance / pinchGesture.distance), state.minScale, state.maxScale);
+    state.x = svgPoint.x - pinchGesture.worldX * state.scale;
+    state.y = svgPoint.y - pinchGesture.worldY * state.scale;
     applyTransform();
   }
 
@@ -640,34 +734,49 @@
       return;
     }
 
-    dragStart = {
+    event.preventDefault();
+    hideTooltip();
+    activePointers.set(event.pointerId, {
+      pointerId: event.pointerId,
       clientX: event.clientX,
-      clientY: event.clientY,
-      x: state.x,
-      y: state.y
-    };
+      clientY: event.clientY
+    });
     svg.classList.add("is-dragging");
     svg.setPointerCapture(event.pointerId);
+    refreshPointerGesture();
   });
 
   svg.addEventListener("pointermove", (event) => {
-    if (!dragStart) {
+    if (!activePointers.has(event.pointerId)) {
       return;
     }
 
-    const rect = svg.getBoundingClientRect();
-    state.x = dragStart.x + ((event.clientX - dragStart.clientX) / rect.width) * view.width;
-    state.y = dragStart.y + ((event.clientY - dragStart.clientY) / rect.height) * view.height;
-    applyTransform();
+    event.preventDefault();
+    activePointers.set(event.pointerId, {
+      pointerId: event.pointerId,
+      clientX: event.clientX,
+      clientY: event.clientY
+    });
+
+    const pointers = getPointerList();
+
+    if (pointers.length >= 2) {
+      updatePinchGesture(pointers[0], pointers[1]);
+    } else {
+      updateDragGesture(pointers[0]);
+    }
   });
 
-  function endDrag(event) {
-    dragStart = null;
-    svg.classList.remove("is-dragging");
+  function endPointerGesture(event) {
+    if (event) {
+      activePointers.delete(event.pointerId);
 
-    if (event && svg.hasPointerCapture(event.pointerId)) {
-      svg.releasePointerCapture(event.pointerId);
+      if (svg.hasPointerCapture(event.pointerId)) {
+        svg.releasePointerCapture(event.pointerId);
+      }
     }
+
+    refreshPointerGesture();
   }
 
   for (const control of controls) {
@@ -685,8 +794,8 @@
     });
   }
 
-  svg.addEventListener("pointerup", endDrag);
-  svg.addEventListener("pointercancel", endDrag);
+  svg.addEventListener("pointerup", endPointerGesture);
+  svg.addEventListener("pointercancel", endPointerGesture);
   svg.addEventListener("mouseleave", hideTooltip);
 
   loadMap();
