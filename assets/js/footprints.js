@@ -13,6 +13,10 @@
     "VN"
   ];
 
+  const filledWorldTerritories = [
+    "TW"
+  ];
+
   const visitedChinaProvinces = [
     "上海市",
     "云南省",
@@ -49,6 +53,7 @@
     CN: "China",
     KP: "North Korea",
     KR: "South Korea",
+    TW: "Taiwan",
     US: "United States",
     VA: "Vatican City"
   };
@@ -112,6 +117,7 @@
   const mapExtent = [[0, 12], [view.width, view.height - 12]];
   const repeatOffsets = [-view.width, 0, view.width];
   const visitedCountrySet = new Set(visitedCountries.map(normalizeRegionName));
+  const filledWorldTerritorySet = new Set(filledWorldTerritories.map(normalizeRegionName));
   const visitedProvinceSet = new Set(visitedChinaProvinces.map(normalizeRegionName));
   const regionNamesZh = createChineseRegionNames();
   const state = {
@@ -236,8 +242,14 @@
 
   function isCountryVisited(feature) {
     const properties = feature.properties || {};
+    const countryCode = getCountryCode(feature);
+
+    if (filledWorldTerritorySet.has(normalizeRegionName(countryCode))) {
+      return true;
+    }
+
     const keys = [
-      getCountryCode(feature),
+      countryCode,
       properties.ISO_A3,
       properties.ADM0_A3,
       properties.ADM0_A3_US,
