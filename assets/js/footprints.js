@@ -13,9 +13,14 @@
     "VN"
   ];
 
-  const filledWorldTerritories = [
+  const chinaWorldRegions = [
+    "CN",
+    "HK",
+    "MO",
     "TW"
   ];
+
+  const chinaWorldLabel = "China 中国";
 
   const visitedChinaProvinces = [
     "上海市",
@@ -53,7 +58,6 @@
     CN: "China",
     KP: "North Korea",
     KR: "South Korea",
-    TW: "Taiwan",
     US: "United States",
     VA: "Vatican City"
   };
@@ -117,7 +121,7 @@
   const mapExtent = [[0, 12], [view.width, view.height - 12]];
   const repeatOffsets = [-view.width, 0, view.width];
   const visitedCountrySet = new Set(visitedCountries.map(normalizeRegionName));
-  const filledWorldTerritorySet = new Set(filledWorldTerritories.map(normalizeRegionName));
+  const chinaWorldRegionSet = new Set(chinaWorldRegions.map(normalizeRegionName));
   const visitedProvinceSet = new Set(visitedChinaProvinces.map(normalizeRegionName));
   const regionNamesZh = createChineseRegionNames();
   const state = {
@@ -220,6 +224,11 @@
 
   function getCountryLabel(feature) {
     const code = getCountryCode(feature);
+
+    if (chinaWorldRegionSet.has(normalizeRegionName(code))) {
+      return chinaWorldLabel;
+    }
+
     const englishName = getCountryEnglishName(feature);
     const chineseName = getChineseCountryName(code);
 
@@ -244,7 +253,7 @@
     const properties = feature.properties || {};
     const countryCode = getCountryCode(feature);
 
-    if (filledWorldTerritorySet.has(normalizeRegionName(countryCode))) {
+    if (chinaWorldRegionSet.has(normalizeRegionName(countryCode))) {
       return true;
     }
 

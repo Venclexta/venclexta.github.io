@@ -307,6 +307,20 @@ p {
   border-top: 1px solid var(--item-rule);
 }
 
+.education-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.education-heading p {
+  margin: 0;
+}
+
+.education-heading p::before {
+  content: ", ";
+}
+
 .timeline-item time,
 .publication-list time {
   color: var(--gray-500);
