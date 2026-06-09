@@ -321,6 +321,17 @@ p {
   content: ", ";
 }
 
+.research-interests {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0 1ch;
+  margin-top: 4px;
+}
+
+.research-interests p {
+  margin: 0;
+}
+
 .timeline-item time,
 .publication-list time {
   color: var(--gray-500);
